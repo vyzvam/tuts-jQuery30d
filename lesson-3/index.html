@@ -5,6 +5,8 @@
 	<title></title>
 	<style type="text/css">
 		li {color: black;}
+		.emphasis {color: green;}
+
 	</style>
 
 </head>
@@ -24,6 +26,8 @@
 	<ul class="emphasis">
 		<li>hello</li>
 		<li>hello 2</li>
+		<li>hello 3</li>
+		<li>hello 4</li>
 		<li>
 			<ul>
 				<li>hello from the nest.</li>
@@ -56,8 +60,44 @@
 			function: find();
 		*/
 		//$('ul.emphasis').find('li').css('color', 'green'); //fully jQuery
-		$('ul.emphasis li').css('color', 'green'); //jQuery with css
+		//$('ul.emphasis li').css('color', 'green'); //jQuery with css
 
+		
+		/* 
+			The function below is to access the first element ":first" / "().first"
+			function: first();
+		*/
+		//$('ul.emphasis').children('li:first-child').addClass('emphasis'); //css
+		//$('ul.emphasis').children('li:nth-child(1)').addClass('emphasis'); //css
+		//$('ul.emphasis').children('li:first').addClass('emphasis'); //jQuery css helper
+		//$('ul.emphasis').children('li').first().addClass('emphasis'); //jQuery method
+		$('ul.emphasis > li:first').addClass('emphasis'); //css
+
+
+
+		/* 
+			The function below is to change text of  nth element 
+			function: eq();
+		*/
+		//$('ul.emphasis').children('li:nth-child(2)').text('added with jQuery'); //css
+		$('ul.emphasis').children('li').eq(2).text('added with jQuery'); //jquery
+
+		/* 
+			The function below is to traverse elements
+			function: prev(); next();
+		*/
+		//$('ul.emphasis > li:nth-child(3)').prev().text('added with jQuery'); //css
+		//$('ul.emphasis > li:nth-child(3)').next().text('added with jQuery'); //css
+		//$('ul.emphasis').children('li').eq(2).prev().text('added with jQuery'); //jquery
+		//$('ul.emphasis').children('li').eq(2).next().text('added with jQuery'); //jquery
+
+		/* 
+			indenting the method chaining is a good practice
+		*/
+		$('ul.emphasis')
+			.children('li')
+				.eq(2)
+					.next().text('added with jQuery');
 
  	</script>
 
