@@ -1,0 +1,68 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title></title>
+	<style type="text/css">
+		li {color: black;}
+	</style>
+
+</head>
+
+<body>
+
+	<div class="container">
+		<h1>Welcome to my website</h1>
+		<p>
+			This is my webiste where i learn jQuery. jQuery is a javascript
+			framework that simplifies the way we call and implement javascript functions
+			in a script code jQuery function can be also reference as the dollar sign "$".
+			Enjoy!
+
+		</p>
+
+	<ul class="emphasis">
+		<li>hello</li>
+		<li>hello 2</li>
+		<li>
+			<ul>
+				<li>hello from the nest.</li>
+			</ul>
+		</li>
+	</ul>
+
+	</div>
+
+
+	<script src="../jquery-1.7.1.js"></script>
+
+
+		
+	<script>  
+
+		/* 
+			The function below is to access the direct children (not decendants) of an element
+			take note that the particular css will only reflect if a style is already in place
+			function: children();
+
+		*/
+		//$('ul.emphasis').children('li').css('color', 'green'); //fully jQuery
+		//$('ul.emphasis > li').css('color', 'green'); //jQuery with css
+
+			
+
+		/* 
+			The function below is to access all childrens / decendants of an element
+			function: find();
+		*/
+		//$('ul.emphasis').find('li').css('color', 'green'); //fully jQuery
+		$('ul.emphasis li').css('color', 'green'); //jQuery with css
+
+
+ 	</script>
+
+
+</body>
+
+</html>
+
