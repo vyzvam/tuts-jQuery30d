@@ -1,12 +1,21 @@
 <html>
 <head>
 	<title></title>
+	<script src="../jquery-1.7.1.js"></script>
 
 	<style>
-		ul li {color: red;}
-		.emphasys {color: green;}	
+		.emphasys {font-weight: bold;}	
 	</style>
 
+		
+	<script>  
+		$(document).ready(function()
+		{
+			$('li:first-child').addClass('emphasys');		
+		});
+
+
+ 	</script>
 </head>
 
 <body>
@@ -17,12 +26,6 @@
 		<li>hello 3</li>
 	</ul>
 
-	<script src="../jquery-1.7.1.js"></script>
-		
-	<script>  
-		$('ul li').addClass('emphasys');
-
- 	</script>
 </body>
 
 </html>
