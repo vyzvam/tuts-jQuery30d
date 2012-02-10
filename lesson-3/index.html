@@ -4,8 +4,7 @@
 	<meta charset=utf-8>
 	<title></title>
 	<style type="text/css">
-		li {color: black;}
-		.emphasis {color: green;}
+		.container {color: green;}
 
 	</style>
 
@@ -23,18 +22,20 @@
 
 		</p>
 
-	<ul class="emphasis">
-		<li>hello</li>
-		<li>hello 2</li>
-		<li>hello 3</li>
-		<li>hello 4</li>
-		<li>
-			<ul>
-				<li>hello from the nest.</li>
+		<div class="container">
+			<ul class="emphasis">
+				<li>hello</li>
+				<li>hello 2</li>
+				<li>hello 3</li>
+				<li>hello 4</li>
+				<li>hello 5</li>
+				<li>
+					<ul>
+						<li>hello from the nest.</li>
+					</ul>
+				</li>
 			</ul>
-		</li>
-	</ul>
-
+		</div>
 	</div>
 
 
@@ -71,7 +72,7 @@
 		//$('ul.emphasis').children('li:nth-child(1)').addClass('emphasis'); //css
 		//$('ul.emphasis').children('li:first').addClass('emphasis'); //jQuery css helper
 		//$('ul.emphasis').children('li').first().addClass('emphasis'); //jQuery method
-		$('ul.emphasis > li:first').addClass('emphasis'); //css
+		//$('ul.emphasis > li:first').addClass('emphasis'); //css
 
 
 
@@ -80,7 +81,7 @@
 			function: eq();
 		*/
 		//$('ul.emphasis').children('li:nth-child(2)').text('added with jQuery'); //css
-		$('ul.emphasis').children('li').eq(2).text('added with jQuery'); //jquery
+		//$('ul.emphasis').children('li').eq(2).text('added with jQuery'); //jquery
 
 		/* 
 			The function below is to traverse elements
@@ -94,12 +95,39 @@
 		/* 
 			indenting the method chaining is a good practice
 		*/
-		$('ul.emphasis')
+/*		$('ul.emphasis')
 			.children('li')
 				.eq(2)
 					.next().text('added with jQuery');
+*/
+		
+		
+		/* 
+			The function below is to access the direct parent element
+			function: parent();
+			take note that this function may not take effect since 
+			the direct parent does not have the emphasis class applied in the
+			first place
+		*/
+		//$('li').parent('.container').removeClass('container');
+
+
+		/* 
+			The function below is to access all parents / closest parent element specified in the selector
+			function: parents(); , closest();
+
+		*/
+		//$('li').parents('.container').removeClass('container');
+		//$('li').closest('.container').removeClass('container');
+
+		console.log($('li').parent('.container'));
+		console.log($('li').parents('.container'));
+		console.log($('li').closest('.container'));
+
 
  	</script>
+
+
 
 
 </body>
