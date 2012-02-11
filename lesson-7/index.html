@@ -1,0 +1,47 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Appending Content</title>
+
+</head>
+
+<body>
+
+	<article>
+		<h1>My Awesome Post</h1>
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
+		</p>
+	
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
+		</p>	</article>
+
+	<script src="../jquery-1.7.1.js"></script>
+
+	<script type="text/javascript">
+
+	(function() {
+
+		$('dd').filter(':nth-child(n+4)').addClass('hide');
+
+		$('dl').on('mouseenter', 'dt', function() {
+
+			$(this)
+				.next()
+					.slideDown(200)
+					.siblings('dd')
+						.slideUp(200);
+
+		})
+
+	})()
+
+
+	</script>
+
+</body>
+
+</html>
+
