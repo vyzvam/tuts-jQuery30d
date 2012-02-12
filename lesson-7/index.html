@@ -4,6 +4,21 @@
 	<meta charset=utf-8>
 	<title>Appending Content</title>
 
+	<style type="text/css">
+
+		article {
+			width: 600px;
+			margin: auto;
+		}
+		blockquote {
+			float: right;
+			background: #e3e3e3;
+			font-size: 2em;
+			width: 40%;
+			text-align: center;
+		}
+	</style>
+
 </head>
 
 <body>
@@ -11,15 +26,15 @@
 	<article>
 		<h1>My Awesome Post</h1>
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
+			<span class="co">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span> Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
 		</p>
 	
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. <span class="co">Vestibulum quis quam et arcu ultrices cursus.</span> Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
 		</p>	
 
 		<p>
-			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. <span class="co">Fusce ac nulla ac odio consequat convallis aliquam sed magna.</span> Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
 		</p>	
 
 	</article>
@@ -57,9 +72,18 @@
 		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).appendTo('article');	
 		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertAfter('h1');	
 		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertBefore('p:nth-child(2)');	
-		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertBefore('p:nth-child(2)');	
+		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertBefore('p:nth-child(2)');		  
+		//$('p').eq(0).append( $('<h2></h2>', {text: "Greetings from JS", class: "myClass"}) );
 
+		var co = $('article').find('span.co').each(function() {
 
+			var $this = $(this);
+			$('<blockquote></blockquote>', {
+				class: 'co',
+				text: $this.text()
+			}).prependTo($this.closest('p'));
+
+		}); 	
 
 
 	})();
