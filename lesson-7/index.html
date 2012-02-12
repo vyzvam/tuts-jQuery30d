@@ -16,15 +16,19 @@
 	
 		<p>
 			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
-		</p>	</article>
+		</p>	
+
+		<p>
+			Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. Fusce vitae ante sit amet ipsum auctor aliquet et in diam. Fusce ac nulla ac odio consequat convallis aliquam sed magna. Morbi facilisis libero at leo iaculis malesuada. Cum sociis natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Pellentesque venenatis facilisis consequat. Aenean tempor sapien ac ipsum mollis et pretium eros auctor. Curabitur venenatis pellentesque arcu scelerisque molestie.			
+		</p>	
+
+	</article>
 
 	<script src="../jquery-1.7.1.js"></script>
 
 	<script type="text/javascript">
 
 	(function() {
-
-
 
 		/*
 			appending and prepending  content on element
@@ -41,6 +45,22 @@
 		*/
 		//$('h1').after('Hello from the javascript after h1');
 		//$('p').first().before('Hello from the javascript before 1st p');
+
+
+		/*
+			Creating a content specifying the tag element as the jQuery selector
+			functions : prependTo(), appendTo(), insertAfter() & insertBefore()
+
+		*/
+
+		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).prependTo('article');	
+		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).appendTo('article');	
+		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertAfter('h1');	
+		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertBefore('p:nth-child(2)');	
+		//$('<h2></h2>', {text: "Hello from javascript", class: "myClass"}).insertBefore('p:nth-child(2)');	
+
+
+
 
 	})();
 
