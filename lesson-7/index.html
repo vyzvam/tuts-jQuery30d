@@ -24,19 +24,25 @@
 
 	(function() {
 
-		$('dd').filter(':nth-child(n+4)').addClass('hide');
 
-		$('dl').on('mouseenter', 'dt', function() {
 
-			$(this)
-				.next()
-					.slideDown(200)
-					.siblings('dd')
-						.slideUp(200);
+		/*
+			appending and prepending  content on element
+			function: append(); & prepend();
 
-		})
+		*/
+		//$('article').append('Hello from the javascript after');
+		//$('article').prepend('Hello from the javascript before');
 
-	})()
+		/*
+			adding a content after and before an element
+			function: append(); & prepend();
+
+		*/
+		//$('h1').after('Hello from the javascript after h1');
+		//$('p').first().before('Hello from the javascript before 1st p');
+
+	})();
 
 
 	</script>
