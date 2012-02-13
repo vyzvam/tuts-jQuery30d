@@ -1,0 +1,129 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>The this keyword</title>
+
+</head>
+
+<body>
+
+<a href="http://tutplus.com">Click Me</a>
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+	
+/*
+	this refers to the DOM Object because the function is called directly on the DOM Layer.
+	We can also say that the owner of the function call "function.log()" is the DOM object.
+
+	Even if we put the function within another function it will still refer to the DOM Object.
+
+*/
+
+
+/*
+//console.log(this);
+
+//javascript function
+function doSomething()
+{
+	console.log(this);
+}
+
+//javascript function call
+doSomething();
+
+//auto executing wrapper
+(function() {
+	doSomething();
+})();
+
+
+//self invoking anonymous function
+(function() {
+	console.log( this );
+})();
+
+//self invoking function
+(function doSomething() {
+	console.log( this );
+})();
+*/
+
+/*
+	e is an argument referring to the event of the function call
+	The this keyword now will refer to the anchor tag since the event / methods occurs on the anchor tag
+*/
+
+/*function doSomething(e)
+{
+	e.preventDefault();
+	console.log(e);
+	console.log(this);
+}
+
+$('a').on('click', doSomething);
+
+*/
+
+
+
+/*
+	Below code shows how we can change what the this keyword will represent
+
+*/
+
+var obj = {
+	doIt: function(e) {
+		console.log(this);
+		e.preventDefault();
+	}
+}
+
+//calling the method directly will make this refer to the anchor tag
+//$('a').on('click', obj.doIt);
+
+//calling the method within an anonymous function will make 
+//this refer to the method's class object. Here the event argument is available within the 
+//anonymous function and not to the function being called
+/*$('a').on('click', function(e) {
+	obj.doIt();
+	e.preventDefault();
+});*/
+
+
+//if within the anomymous method we still want this keyword to refer to the anchor tag
+// functions: call() with the argument that will be used as this in the method declaration
+//            apply() with arguments as array
+
+
+/*$('a').on('click', function(e) {
+	obj.doIt.call(this);
+	e.preventDefault();
+});
+*/
+
+/*$('a').on('click', function(e) {
+	obj.doIt.call(this, e); 
+	//obj.doIt.apply([this, e]); 
+});
+*/
+
+/*
+	using jQuery's proxy method
+*/
+
+//this will refer to the anchor tag
+//$('a').on('click', obj.doIt); 
+
+//this will refer to whatever the 2nd argument is, in this case the obj
+$('a').on('click', $.proxy(obj.doIt, obj) ); 
+
+</script>
+
+</body>
+
+</html>
+
