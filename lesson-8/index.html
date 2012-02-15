@@ -6,6 +6,19 @@
 
 	<style>
 
+		button {
+			font-family: Arial, Helvetica, sans-serif;
+			font-size: 16px;
+			color: #000000;
+			padding: 8px 14px;
+			border-radius: 6px;
+			border: 2px solid #000000;
+			-webkit-border-radius: 6px;
+			-moz-border-radius: 6px;
+		}
+
+
+
 	body {
 		width: 600px;
 		margin: auto;
@@ -90,7 +103,7 @@
 					<textarea name="comments" id="comments" cols="30" rows="10"></textarea>
 				</li>
 				<li>
-					<input type="submit" value="Submit">
+					<button>Submit</button>
 				</li>
 			</ul>
 		</form>
@@ -150,7 +163,7 @@
 
 			if ($this.find('span.close').length) return;
 
-			$('<span class=close>X</span>')
+			$('<span></span>', {text: "X", class: "close"} )
 				.prependTo(this)
 				.on('click', function(){
 					$this[contactForm.config.effect](contactForm.config.speed);
@@ -162,13 +175,13 @@
 
 	};
 
-		//declaring and creating an object of the class
-		contactForm.init({
-			effect: "slideToggle",
-			speed: 300
-		});
+	//declaring and creating an object of the class
+	contactForm.init({
+		effect: "slideToggle",
+		speed: 300
+	});
 
-	})();
+})();
 
 </script>
 

@@ -1,0 +1,209 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>My Effects Tutorial</title>
+
+	<style>
+
+	button {
+		font-family: Arial, Helvetica, sans-serif;
+		font-size: 16px;
+		color: #000000;
+		padding: 8px 14px;
+		cursor: pointer;
+	}
+
+
+
+	body {
+		width: 600px;
+		margin: auto;
+		font-family: sans-serif;
+	}
+
+	.dashboard { 
+	    width: 400px;
+	    position: absolute;
+	    top: 30%;
+	    left: 40%;
+	}
+
+	.window { 
+	    width: 400px;
+		border: 1px solid #666666;
+		background: #e3e3e3;
+	    position: absolute;
+	    top: 30%;
+	    left: 40%;
+	    display: none;
+	}
+
+	h2 { margin-top: 0; }
+
+	ul { padding: 0; }
+
+	li { 
+		list-style: none;
+		margin-bottom: 1em;
+	}
+
+	/* Close button on form */
+	.close {
+		position: absolute;
+		right: 10px;
+		top: 10px;
+		font-weight: bold;
+		font-family: sans-serif;
+		cursor: pointer;
+	}	
+
+	/* Form inputs */
+	input, textarea { width: 90%; line-height: 2em;}
+	input[type=submit] { width: auto;  }
+	label { display: block; text-align: left; }
+
+	</style>
+
+</head>
+
+<body>
+
+
+
+	<div class="dashboard">
+		<button id="name">Name</button>
+		<button id="company">Company</button>
+		<button id="title">Title</button>
+		<button id="email">Email</button>
+
+	</div>
+
+
+	<div id="nameWindow" class="window">
+		<h2>Name</h2>
+		<form action="#">
+			<ul>
+				<li>
+					<label for="name">Name: </label>
+		 			<input name="name" id="name">
+				</li>
+
+				<li>
+					<button>Submit</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+
+	<div id="companyWindow" class="window">
+		<h2>Company</h2>
+		<form action="#">
+			<ul>
+				<li>
+					<label for="company">company: </label>
+		 			<input company="company" id="company">
+				</li>
+
+				<li>
+					<button>Submit</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+
+	<div id="titleWindow" class="window">
+		<h2>title</h2>
+		<form action="#">
+			<ul>
+				<li>
+					<label for="title">title: </label>
+		 			<input name="title" id="title">
+				</li>
+
+				<li>
+					<button>Submit</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+
+	<div id="emailWindow" class="window">
+		<h2>email</h2>
+		<form action="#">
+			<ul>
+				<li>
+					<label for="email">email: </label>
+		 			<input name="email" id="email">
+				</li>
+
+				<li>
+					<button>Submit</button>
+				</li>
+			</ul>
+		</form>
+	</div>
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+
+(function() {
+
+	var windowObj = {
+		theWindow: null,
+
+		config: {
+			"effect": "slideToggle",
+			"speed": 500	
+		},
+
+		init: function() {
+			console.log(this);
+			//$.extend(windowObj.config, config);
+			theWindow = $('#' + $(this).attr('id') + "Window");
+			windowObj.show();
+
+		},
+
+		show: function() {
+			console.log('show');	
+			console.log(theWindow);
+			if (theWindow.is(':hidden')) {
+				windowObj.close();
+				theWindow[windowObj.config.effect](windowObj.config.speed);
+			}
+		},
+
+		close: function() {
+			console.log('close');
+			if (theWindow.find('span.close').length) return;
+
+			$('<span class=close>X</span>', {text: "X", class: "close"})
+				.prependTo(theWindow)
+				.on('click', function(){
+					theWindow[windowObj.config.effect](windowObj.config.speed);
+			});				
+
+		}
+	};
+
+
+
+	$('.dashboard button').on('click', function () {
+		windowObj.init
+				.call(this, 
+				{
+					effect: "fadeToggle", 
+					speed: 100
+				});		
+	});	
+})();
+
+
+</script>
+
+</body>
+
+</html>
+
