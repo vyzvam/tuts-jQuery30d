@@ -26,13 +26,15 @@
 
 </div>
 
-<p><button>Increase</button></p>
+<p><button>Centre</button></p>
 
 <script src="../jquery-1.7.1.js"></script>
 
 <script type="text/javascript">
 
 	var box = $('div.box');
+	var w = $('window').width() / 2 + box.outerWidth() / 2;
+	var h = $('window').height() / 2 + box.outerHeight() / 2;
 
 	$('button').on('click', function(){
 
@@ -86,13 +88,29 @@
 		  the queue parameter in the 2nd parameter object 
 		  allows the queue option
 		*/	
-		box
+/*		box
 			.animate(
 				{'font-size': '+=5'},
 				{duration: 500})
 			.animate({'top': '+=500'}, {duration: 500, queue: false});
+*/
 
+	
+		box
+			.animate(
+				{
+				'left': w, 
+				'position': 'absolute'
+				},
+				{duration: 200}
+			)
+			.animate(
+				{
+				'top': h,
 
+				}, 
+				{duration: 200, queue: false}
+			);
 
 
 
