@@ -23,7 +23,6 @@
 		<p>
 			<span class="co">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span> Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. 
 		</p>
-	
 
 </div>
 
@@ -33,7 +32,71 @@
 
 <script type="text/javascript">
 
+	var box = $('div.box');
 
+	$('button').on('click', function(){
+
+
+		/*
+		  1st way of how the animate method can be used.		
+		  animate(property, duration, variation, callback function)
+
+		  property: is a variable or an object containing value modifiers 
+		            of sizes, opacity and position
+		  duration: duration of the animation
+		  variation: how the animation will occur (swing/linear)
+		  callback: function which triggers as soon the animation is complete
+		*/		
+/*		box.animate (
+			{
+			'font-size': '+=5',
+			'width': '+=300'
+			}, 
+			4000, 
+			'swing',
+			function () {
+				console.log("Animate Complete!"); 
+			}
+		);*/
+
+
+
+		/*
+		  2nd way of how the animate method can be used.		
+		  animate(property, object, step)
+
+		  property: is a variable or an object containing value modifiers 
+		            of sizes, opacity and position
+		  object: contains duration, complete (callback function) & step (a call back function that will be called every step of the animation
+		*/	
+
+/*		box.animate(
+				{"font-size": "+=5"},
+				{
+					duration: 500,
+					complete: function () {console.log("Complete is called");},
+				    step: function() {console.log("Step called " + $(this).css('font-size'));}
+				}
+		)	
+*/
+
+
+		/*
+		  Stacking the animate method
+		  the queue parameter in the 2nd parameter object 
+		  allows the queue option
+		*/	
+		box
+			.animate(
+				{'font-size': '+=5'},
+				{duration: 500})
+			.animate({'top': '+=500'}, {duration: 500, queue: false});
+
+
+
+
+
+	})
 
 </script>
 
