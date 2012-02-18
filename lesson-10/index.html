@@ -92,7 +92,28 @@
 $('div.content').hide();
 
 $('h1').on('click', function() {
-	$(this).next().slideDown();
+	
+	
+	//uses the dafault speed which is stored in the _default field
+	//any unrecognized string value will automaticall call the default value
+	//$(this).next().slideDown(); 
+
+	//specify a microseconds value as below
+	//$(this).next().slideDown(2000); 
+
+	//specify a helper value which in turn references to the integer value
+	//$(this).next().slideDown('fast'); 
+	//$(this).next().slideDown('slow'); 
+
+
+	//we can change the default value by accessing the jquery's fx library values
+/*	$.fx.speeds._default = 3000;
+	$(this).next().slideDown('Jibumba');
+*/
+	//creating a custom variable to be used as helper value
+	$.fx.speeds.lightning = 50;
+	$(this).next().slideDown('lightning');
+
 })
 
 </script>
