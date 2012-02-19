@@ -1,0 +1,84 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Custom Effect Methods</title>
+
+	<style>
+
+		.box {
+			width: 400px;
+			background: red;
+			position: relative;
+		}
+
+	</style>
+
+</head>
+
+<body>
+
+<div class="box">
+		<p>
+			<span class="co">Lorem ipsum dolor sit amet, consectetur adipiscing elit.</span> Etiam id purus aliquet libero tempus posuere in bibendum tortor. Aliquam gravida sapien vel lectus faucibus placerat. Integer ac justo quis felis auctor adipiscing. Mauris porta, est vitae venenatis tempus, velit ipsum rhoncus arcu, ac lobortis lacus justo ac urna. Vestibulum quis quam et arcu ultrices cursus. Ut ac quam augue. Pellentesque hendrerit molestie elit et vehicula. 
+		</p>
+
+</div>
+<p><button>Fade & Slide</button></p>
+
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+
+(function(){
+
+
+	var box = $('div.box')
+
+	jQuery.fn.fadeSlideToggle = function (speed, fn) {
+		
+		var $this = $(this);
+
+		//returning the object is important so that the return jquery object
+		//can be chained with other functions
+
+		return $this
+			.animate(
+				{
+					opacity: 'toggle'
+					, height: 'toggle'
+				}
+
+				// the || symbol is value defaulter specyfing that 
+				//the code will use the the value on the right if the value on the 
+				//left is undefined
+				, speed || 400
+				, function() {
+
+					//short hand for the if condition
+					$.isFunction(fn) && fn.call(this);
+				}
+			)
+/*			.animate(
+				{height: 'toggle'},
+				{queue: false}
+			)
+*/		;
+	};
+
+
+	$('button').on('click', function() {
+		box.fadeSlideToggle(200, function() {
+			console.log('custom function callback');
+		});
+	})
+
+})();
+
+</script>
+
+</body>
+
+</html>
+
