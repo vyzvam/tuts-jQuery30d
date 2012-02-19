@@ -32,7 +32,25 @@
 </div>
 
 <script src="../jquery-1.7.1.js"></script>
-<script src="slider1.js"></script>
+<script src="slider.proto.js"></script>
+	
+<script type="text/javascript">
+
+(function() {
+
+	var container = $('div.slider').css({overflow: 'hidden'}).children('ul');
+	var sliderObj = new Slider( container, $('.slider_nav') );
+    
+    sliderObj.nav.show().find('button').on('click', function () {
+    	sliderObj.setCurrent($(this).data('dir'));
+    	sliderObj.transition()
+    })
+
+})();
+
+</script>	
+
+
 
 </body>
 </html>
