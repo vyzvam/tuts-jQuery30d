@@ -1,0 +1,50 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Q&A</title>
+</head>
+<body>
+
+<script id="blogTemplate" type="tuts/template">
+	<h2>{{title}}</h2>
+	<img src={{thumbnail}}></img>	
+</script>
+
+<script src="../jquery-1.7.1.js"></script>
+	
+<script>	
+
+(function() {
+	var content = [
+			{
+				title: 'My Awesome blogpost!',
+				thumbnail: 'http://us.media4.battle.net/cms/ad_300x250/408AVZB61FWY1309281629167.jpg'
+			},
+
+			{
+				title: 'My Awesome blogpost 2!',
+				thumbnail: 'http://us.media4.battle.net/cms/ad_300x100/W10JV24FF5IV1309281747219.jpg'
+			}
+		],
+
+	 template = $.trim( $('#blogTemplate').html() );
+
+	 var temp = '';
+
+	 $.each(content, function(index, item) {
+
+	 	temp += template
+	 				.replace(/{{title}}/ig, item.title)
+	 				.replace(/{{thumbnail}}/ig, item.thumbnail)
+	 			;	 	
+	 });
+
+	 $('body').append(temp);
+
+})();	
+
+</script>
+
+</body>
+</html>
