@@ -1,0 +1,52 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Moustache</title>
+</head>
+<body>
+
+<ul class="tweets">
+	<script id="template" type="text/x-jquery-tmpl">
+	<li>
+		<h2>${author}</h2>
+		<p>${tweet}</p>
+	</li>
+
+
+
+	</script>
+</ul>
+
+<script src="../jquery-1.7.1.js"></script>
+<script src="../jquery.tmpl.js"></script>
+
+<!-- 
+<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
+ -->	
+
+<script>
+
+(function() {
+	var data = [
+	
+		{
+			author: 'Subathiran',
+			tweet: 'Learning jQuery in 30 Days'
+		},
+
+		{
+			author: 'Vathsala',
+			tweet: 'Digital Signature pattern study'
+		}
+	];
+
+	$('#template').tmpl(data).appendTo('ul.tweets');
+	//$('ul .tweets').append(template);
+
+})();
+
+</script>
+
+</body>
+</html>
