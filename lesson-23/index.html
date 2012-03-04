@@ -1,0 +1,43 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>AJAX : Load</title>
+
+	<style type="text/css">
+	.nav li {
+		list-style: none;
+		float: left;
+	}
+	</style>
+
+</head>
+<body>
+
+	<div id="navDIV">
+		<ul id="navUL">
+			<li><a id="aboutus" href="aboutus.html">About Us<a></li>
+			<li><a id="contact" href="contactus.html">Contact Us<a></li>
+		</ul>
+	</div>
+
+	<div id="content">
+	</div>
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+	
+(function() {
+	var content = $('#content');
+	$('a').on('click', function(e) { 
+		e.preventDefault();
+		content.load($(this).attr('href') + ' #content');
+	});
+
+})();
+
+</script>
+
+</body>
+</html>

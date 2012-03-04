@@ -1,0 +1,207 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Twitter API Extended</title>
+	<style type="text/css">
+		body{
+			width: 600px;
+			margin: auto;
+			background:#ececec;
+			font-size:10pt;
+			font-family:'Aller','Rockwell',serif;
+			font-weight:bold;
+		}
+		li{
+			list-style: none;
+			padding:1em;
+			border-bottom:1px solid #ccc;
+		}
+		img{
+			float: left;
+			width:48px;
+			height:48px;
+		}
+		h1{
+			font-size:18px;
+			font-weight:bold;
+			padding-bottom:10px;
+			padding-bottom:0px;
+		}
+		h2{
+			font-size:18px;
+			font-weight:bold;
+			padding-bottom:10px;
+		}
+		.time{
+			font-size:16pt;
+			font-style:italic;
+		}
+		a{
+			text-decoration:none;
+			color:#228899;
+		}
+		a:hover{
+			text-decoration:underline;
+		}
+		
+		ul {
+			padding-left: 0px;
+		}
+
+
+		</style>	
+</head>
+<body>
+	<form action="#">
+		<h1>Twitter Search</h1>
+		<p><input type="text" name="q" id="q"></p>
+
+		<h1>Tweet Filter</h1>
+		<p><input type="text" name="s" id="s"></p>
+	</form>
+
+	<ul class="tweets">
+		<script id="scriptTPL" type="text/x-jquery-tmpl">
+		<li>
+			<img src=${thumb}>
+			<h2>
+				${author}
+			</h2>
+			<p>
+				${tweet}
+				<a href=${url}>More at Twitter</a>
+			</p>
+		</li>
+		</script>
+	</ul>
+<script src="../jquery-1.7.1.js"></script>
+<script src="../jquery.tmpl.js"></script>
+
+<script type="text/javascript">
+	
+
+(function( $ ) {
+	var o = $( {} );
+
+	$.each({
+		trigger: 'publish',
+		on: 'subscribe',
+		off: 'unsubscribe'
+	}, function (key, value) {
+		$[value] = function() {
+			o[key].apply(o, arguments);
+		}
+	});
+
+})(jQuery);
+
+
+(function() {
+
+	var Twitter = {
+
+		conf: {
+			query: 'star wars',
+			inputQuery: '#q',
+			inputFilter: '#s',
+			container: 'ul.tweets',
+			TPL: '#scriptTPL'
+		}, 
+
+		init: function(conf) {
+			$.extend(this.conf, conf);
+			this.tweets;
+			this.timer;	
+			this.viewMethodName = 'Formatted';
+			this.bindEvents();
+			this.subscriptions();
+
+		},
+
+		bindEvents: function() {
+			$('#q').on('keyup', this.search);
+			$('#s').on('keyup', this.filter);
+		},
+
+		subscriptions: function () {
+			$.subscribe('twitter/query', this.fetchJSON);
+			$.subscribe('twitter/results', this.renderView);
+		},
+
+		search: function() {
+			var input = this,
+				self = Twitter;
+
+				clearTimeout(self.timer);
+
+				self.timer = (input.value.length > 3) && setTimeout(function () {
+					self.conf.query = input.value;
+					$.publish('twitter/query');
+				}, 400);
+		},
+
+		filter: function() {
+			var input = this,
+				self = Twitter;
+			clearTimeout(self.timer);
+
+			if (input.value.length == 0) {
+				$.publish('twitter/query');	
+			}
+			else {
+				self.timer = (input.value.length > 3) && setTimeout(function () {
+					self.viewMethodName = 'Filtered';					
+					$.publish('twitter/results');
+					}, 400);
+
+			}
+
+		},
+
+		fetchJSON: function() {
+			var url = 'http://search.twitter.com/search.json?callback=?&q=';
+			Twitter.viewMethodName = 'Formatted';
+
+			$.getJSON(url + Twitter.conf.query, function (dataJSON) {
+					Twitter.tweets = dataJSON.results;
+					$.publish('twitter/results');	
+			});
+		},
+
+		renderView: function() {
+			$(Twitter.conf.container).children('li').remove();
+			$(Twitter.conf.TPL).tmpl(Twitter['get' + Twitter.viewMethodName + 'Tweets']()).prependTo(Twitter.conf.container);
+		},
+
+		getFormattedTweets: function () {
+			 return $.map(Twitter.tweets, function (item, index) {
+					return {
+						author: item.from_user,
+						tweet: item.text,
+						thumb: item.profile_image_url,
+						url: 'http://twitter.com/' + item.from_user + '/status/' + item.id_str			
+					};
+			});
+		},
+
+		getFilteredTweets: function () {
+			 return $.grep(Twitter.getFormattedTweets(), function (item, index) {
+			 	var regexed = new RegExp( $('#s').attr('value'),'i');
+			 	return (item.tweet.search( regexed) != -1 ) ? true : false ;
+
+			});
+		}
+
+	};
+
+	Twitter.init();
+})();
+
+
+
+
+</script>
+
+</body>
+</html>

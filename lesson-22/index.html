@@ -1,0 +1,72 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Custom Events</title>
+
+</head>
+<body>
+	<h2>Click Me!</h2>
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+	
+// $('body').on('click', function() {
+// 	console.log('Body was clicked!');
+// })
+
+// An event can be triggered on the code level as well
+// $('body').trigger('click');
+
+
+
+
+/*$.getJSON('http://search.twitter.com/search.json?q=dog&callback=?', function(results) {
+
+	$(document).trigger('twitter/results', results); //publish 
+});
+
+$(document).on('twitter/results', function(e, data) { //subscribe
+	console.log(data);
+});
+*/
+
+
+(function ( $ ) {
+
+	//jQuery able to pass itself as an object, is as below
+	var obj = $( {} );
+
+	$.each({
+		trigger: 'publish',
+		on: 'subscribe',
+		off: 'unsubscribe'
+	}, function (key, value) {
+		jQuery[value] = function() {
+			obj[key].apply(obj, arguments);
+		};
+	});
+
+})(jQuery);
+
+$.getJSON('http://search.twitter.com/search.json?q=dog&callback=?', function(results) {
+	$.publish('twitter/results', results);
+});
+
+$.subscribe('twitter/results', function (event, data) {
+	$('body').html(
+		$.map(data.results, function(obj, index) {
+			return  '<li>' + obj.text + '</li>';
+		}).join('') 
+	);
+})
+
+
+
+
+
+</script>
+
+</body>
+</html>
