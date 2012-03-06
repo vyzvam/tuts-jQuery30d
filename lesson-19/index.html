@@ -7,11 +7,20 @@
 <body>
 
 <ul class="tweets">
-	<script id="template" type="text/x-jquery-tmpl">
+	<script id="template" type="text/x-handlebars-template">
+
+	{{#each this}}
 	<li>
-		<h2>${author}</h2>
-		<p>${tweet}</p>
+		<h2>{{author}}  {{#if age }} - <span>{{age}}</span>{{/if}}</h2>
+		<p>{{{tweet}}}</p>
+
+		{{#unless quote}}
+			<h5>The Author does not have a quote</h5>
+		{{/unless}}
+
+
 	</li>
+	{{/each}}
 
 
 
@@ -19,12 +28,11 @@
 </ul>
 
 <script src="../jquery-1.7.1.js"></script>
-<script src="../jquery.tmpl.js"></script>
 
-<!-- 
-<script src="http://cloud.github.com/downloads/wycats/handlebars.js/handlebars-1.0.0.beta.6.js"></script>
- -->	
+<!-- <script src="../jquery.tmpl.js"></script> -->
 
+<script src="../handlebars-1.0.0.beta.6.js"></script>
+	
 <script>
 
 (function() {
@@ -32,17 +40,25 @@
 	
 		{
 			author: 'Subathiran',
-			tweet: 'Learning jQuery in 30 Days'
+			tweet: 'Learning jQuery in 30 Days',
+			age: 34,
+			quote: "We dine in hell!!"
 		},
 
 		{
 			author: 'Vathsala',
-			tweet: 'Digital Signature pattern study'
+			tweet: '<strong>Digital Signature</strong> pattern study',
 		}
 	];
 
-	$('#template').tmpl(data).appendTo('ul.tweets');
-	//$('ul .tweets').append(template);
+
+	//below is the method used by jQuery TMPL
+	// $('#template').tmpl(data).appendTo('ul.tweets');
+
+	var template = Handlebars.compile( $('#template').html());
+	//console.log(template);
+
+	$('ul.tweets').append( template(data) );
 
 })();
 

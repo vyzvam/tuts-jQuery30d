@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>AJAX: Post</title>
+
+</head>
+<body>
+	<h2>Something to save</h2>
+
+	<form id="testForm" action="#">
+		<textarea name="content" id="content" cols="30" rows="10"></textarea>
+		<p><button>Save</button></p>
+	</form>
+
+
+<script src="../jquery-1.7.1.js"></script>
+
+<script type="text/javascript">
+	
+	$('#testForm').on('submit', function(event) {
+		event.preventDefault()
+/*		console.log($(this).find('#content').val());
+		console.log($(this).serialize());
+		console.log($(this).serializeArray());
+*/
+		$.post('save.php', $(this).serialize(), function(result) {
+			console.log('completed ' + result);
+		});
+	
+	});
+
+</script>
+
+</body>
+</html>
