@@ -1,0 +1,136 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset=utf-8>
+	<title>Twitter API</title>
+	<style type="text/css">
+		body{
+			width: 600px;
+			margin: auto;
+			background:#ececec;
+			font-size:10pt;
+			font-family:'Aller','Rockwell',serif;
+			font-weight:bold;
+		}
+		li{
+			list-style: none;
+			padding:1em;
+			border-bottom:1px solid #ccc;
+		}
+		img{
+			float: left;
+			width:48px;
+			height:48px;
+		}
+		h2{
+			font-size:18px;
+			font-weight:bold;
+			padding-bottom:10px;
+		}
+		.time{
+			font-size:16pt;
+			font-style:italic;
+		}
+		a{
+			text-decoration:none;
+			color:#228899;
+		}
+		a:hover{
+			text-decoration:underline;
+		}
+		.text{
+			color:#333;
+			padding-bottom:5px;
+			font-family:serif;
+			font-weight:normal;
+		}
+		.text a{
+			color:#666;
+			text-decoration:underline;
+			font-style:italic;
+		}
+	</style>
+</head>
+<body>
+
+<ul class="tweets">
+	<script id="tweetTPL" type="text/x-handlebars-template">
+	{{#each this}}
+	<li>
+		<img src={{thumb}}>
+		<h2>
+			{{author}}
+		</h2>
+		<p>
+			{{tweet}}
+			<a href={{url}}>More at Twitter</a>
+		</p>
+	</li>
+	{{/each}}
+
+
+	</script>
+</ul>
+
+<script src="../jquery-1.7.1.js"></script>
+<script src="../handlebars-1.0.0.beta.6.js"></script>
+
+
+<script>
+(function() {
+
+	var Twitter = {
+
+		config: {
+			scriptTPL: '#tweetTPL',
+			sectTPL: 'ul.tweets',
+			tweetQuery: 'tutspremium'
+		},
+
+		init: function(config) {
+			$.extend(this.config, config);
+			this.setURL();
+			this.fetchJSON();
+
+		},
+
+		setURL: function() {
+			this.url = 'http://search.twitter.com/search.json?q=' + this.config.tweetQuery + '&callback=?';
+		},
+
+		attachTPL: function(content) {
+			console.log(content);
+			var handle = Handlebars.compile( $(this.config.scriptTPL).html() );
+			$('ul.tweets').append(handle(content))
+		},
+
+		fetchJSON: function () {
+			var self = this;
+
+			$.getJSON(this.url, function(items) {
+				self.tweetSet = $.map(items.results, function(item) {
+					return {
+						author: item.from_user,
+						tweet: item.text,
+						thumb: item.profile_image_url,
+						url: 'http://twitter.com/' + item.from_user + '/status/' + item.id_str
+					};
+				});
+
+				self.attachTPL(self.tweetSet);
+			});
+		}
+
+
+	};
+
+	Twitter.init()
+
+
+
+})();
+
+</script>
+
+</body>
+</html>
