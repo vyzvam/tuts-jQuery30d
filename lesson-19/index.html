@@ -56,8 +56,6 @@
 	// $('#template').tmpl(data).appendTo('ul.tweets');
 
 	var template = Handlebars.compile( $('#template').html());
-	//console.log(template);
-
 	$('ul.tweets').append( template(data) );
 
 })();
