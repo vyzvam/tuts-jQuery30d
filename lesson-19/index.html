@@ -11,7 +11,7 @@
 
 	{{#each this}}
 	<li>
-		<h2>{{author}}  {{#if age }} - <span>{{age}}</span>{{/if}}</h2>
+		<h2>{{fullName author}}  {{#if age }} - <span>{{age}}</span>{{/if}}</h2>
 		<p>{{{tweet}}}</p>
 
 		{{#unless quote}}
@@ -39,14 +39,14 @@
 	var data = [
 	
 		{
-			author: 'Subathiran',
+			author: {first: 'Subathiran', last: 'Subramaniam'},
 			tweet: 'Learning jQuery in 30 Days',
 			age: 34,
 			quote: "We dine in hell!!"
 		},
 
 		{
-			author: 'Vathsala',
+			author: {first: 'Vathsala Devi', last: 'Kunalan'},
 			tweet: '<strong>Digital Signature</strong> pattern study',
 		}
 	];
@@ -54,6 +54,10 @@
 
 	//below is the method used by jQuery TMPL
 	// $('#template').tmpl(data).appendTo('ul.tweets');
+
+	Handlebars.registerHelper('fullName', function (author) {
+			return author.first + ' ' + author.last;
+	});
 
 	var template = Handlebars.compile( $('#template').html());
 	$('ul.tweets').append( template(data) );
