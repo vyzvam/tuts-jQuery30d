@@ -5,6 +5,8 @@ if ( count($_POST) > 0) {
 	connect();
 
 	if ( isset($_POST["q"]) ) {
+
+		
 		$actors = getActorsByLastName( $_POST["q"] );
 
 		if ( isXHR() ) {echo json_encode($actors); return;}
@@ -16,6 +18,7 @@ if ( count($_POST) > 0) {
 			return;
 	}
 }
+
 
 include("views/index.tmpl.php");
 
