@@ -180,15 +180,29 @@ We have created 3 div boxes for our animation testing.
 */
 $('div.box').each(function(i) {
 	$(this).delay(1000 * i).fadeOut(1000);
-}).promise().done(function() {
+}).promise().then(function() {
 	console.log('all animation done');
 });
 
 
 //we can also use $'s when() to implement deferreds for asynchronous operations
 
+function getTweets(searchI) {
+	return $.ajax (
+	{
+		url: 'http://search.twitter.com/search.json',
+		data: {q: searchI},
+		dataType: 'jsonp'
+	});
+}
 
-
+$.when( 
+	getTweets('starwars'), 
+	getTweets('startrek') )
+.done(function(rs1, rs2) {
+	console.log(rs1);
+	console.log(rs2);
+});
 
 
 </script>
