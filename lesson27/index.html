@@ -46,7 +46,7 @@ var myVar,
 		setTimeout(function() {
 			myVar = 'My Value in timeout';
 			// to notifiy that the task is complete
-			deferred.resolve();
+			deferred.reject();
 		}, 2000);
 
 		//to flag this object to inform once it has completed it's task
@@ -80,13 +80,33 @@ setVal().always(function() {
 });
 */
 
-//We can also chain methods above as below
+/*
+We can also chain methods above as below
 
 setVal().done(function() {
 	console.log('Done: ' + myVar);
 }).fail(function() {
 	console.log('Failed: ' + myVar);
-})
+});
+*/
+
+
+
+
+/*
+jQuery provides helper method to easily chain the 
+events for us using the "then" method
+*/
+setVal().then(
+	function() {
+		console.log('Done: ' + myVar);
+	}, 
+	function() {
+		console.log('Failed: ' + myVar);
+	}
+);
+
+
 
 
 
