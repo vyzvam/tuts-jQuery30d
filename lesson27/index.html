@@ -21,7 +21,7 @@
 	the value can only be accessed :
 	  1. Within the function where it will log after assgining the value after 2 seconds or 
 	  2. using a pubsub method where we learnt earlier in this tutorial.
-*/
+
 
 var myVar;
 setTimeout(function() {
@@ -29,6 +29,41 @@ setTimeout(function() {
 	console.log(myVar);
 }, 2000);
 console.log(myVar);
+
+
+*/
+
+/*
+	We will use a deferred to solve the scenario above
+*/
+
+var myVar,
+	
+	//Create a function that will have the deffered object
+	setVal = function() {
+		//deferred object
+		var deferred = $.Deferred();
+		setTimeout(function() {
+			myVar = 'My Value in timeout';
+			// to notifiy that the task is complete
+			deferred.resolve();
+		}, 2000);
+
+		//to flag this object to inform once it has completed it's task
+		return deferred.promise();
+
+	}
+;
+
+
+setVal().done(function() {
+	console.log('all done ' + myVar);
+})
+
+
+
+
+
 
 
 
