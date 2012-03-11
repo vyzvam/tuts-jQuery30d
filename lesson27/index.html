@@ -96,7 +96,6 @@ setVal().done(function() {
 /*
 jQuery provides helper method to easily chain the 
 events for us using the "then" method
-*/
 setVal().then(
 	function() {
 		console.log('Done: ' + myVar);
@@ -105,15 +104,25 @@ setVal().then(
 		console.log('Failed: ' + myVar);
 	}
 );
+*/
 
+/*
+Below we are setting up an actual ajax scenario for us to
+implement the Deferred object
+*/
 
+$.searchTwitter = function(searchItem) {
+	$.ajax({
+		url: 'http://search.twitter.com/search.json',
+		data: {q: searchItem},
+		dataType: 'jsonp',
+		success: function(result) {
+			console.log(result);	
+		}
+	});
+};
 
-
-
-
-
-
-
+$.searchTwitter('cats');
 
 
 
