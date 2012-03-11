@@ -112,17 +112,20 @@ implement the Deferred object
 */
 
 $.searchTwitter = function(searchItem) {
+	var deferred = $.Deferred();
 	$.ajax({
 		url: 'http://search.twitter.com/search.json',
 		data: {q: searchItem},
 		dataType: 'jsonp',
-		success: function(result) {
-			console.log(result);	
-		}
+		success: deferred.resolve
 	});
+
+	return deferred.promise();
 };
 
-$.searchTwitter('cats');
+$.searchTwitter('cats').then(function (result) {
+	console.log(result);
+});
 
 
 
