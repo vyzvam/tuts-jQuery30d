@@ -3,10 +3,22 @@
 <head>
 	<meta charset=utf-8>
 	<title>jQuery Deffereds</title>
+	<style type="text/css">
+		.box {
+			width: 200px;
+			height: 200px;
+			background: green;
+			display: inline-block;
+			margin-right: 3em;
+		}
+	</style>
 
 </head>
 <body>
 
+<div class="box">My Box</div>
+<div class="box">My Box</div>
+<div class="box">My Box</div>
 
 <script src="../jquery-1.7.1.js"></script>
 
@@ -142,6 +154,7 @@ need to explicitly implement deferred as the above code. below is a much more re
 without the implementation of deferreds.
 */
 
+/*
 $.searchTwitter = function(searchItem) {
 	return $.ajax({
 		url: 'http://search.twitter.com/search.json',
@@ -159,7 +172,20 @@ searchObj.then(function (result) {
 searchObj.then(function (result) {
 	console.log(result);
 });
+*/
 
+
+/*Below is an example on how to implement deferreds in other scenario.
+We have created 3 div boxes for our animation testing.
+*/
+$('div.box').each(function(i) {
+	$(this).delay(1000 * i).fadeOut(1000);
+}).promise().done(function() {
+	console.log('all animation done');
+});
+
+
+//we can also use $'s when() to implement deferreds for asynchronous operations
 
 
 
