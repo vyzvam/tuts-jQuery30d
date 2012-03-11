@@ -110,20 +110,53 @@ setVal().then(
 Below we are setting up an actual ajax scenario for us to
 implement the Deferred object
 */
-
+/*
 $.searchTwitter = function(searchItem) {
 	var deferred = $.Deferred();
 	$.ajax({
 		url: 'http://search.twitter.com/search.json',
 		data: {q: searchItem},
 		dataType: 'jsonp',
-		success: deferred.resolve
+		success: deferred.resolve,
+		error: deferred.reject
 	});
 
 	return deferred.promise();
 };
 
-$.searchTwitter('cats').then(function (result) {
+var searchObj = $.searchTwitter('cats');
+
+searchObj.then(function (result) {
+	console.log(result);
+});
+
+searchObj.then(function (result) {
+	console.log(result);
+});
+
+
+*/
+/*
+ajax is already rigged with using deferred in jQuery, this would be we do not
+need to explicitly implement deferred as the above code. below is a much more refined code
+without the implementation of deferreds.
+*/
+
+$.searchTwitter = function(searchItem) {
+	return $.ajax({
+		url: 'http://search.twitter.com/search.json',
+		data: {q: searchItem},
+		dataType: 'jsonp',
+	}).promise();
+};
+
+var searchObj = $.searchTwitter('cats');
+
+searchObj.then(function (result) {
+	console.log(result);
+});
+
+searchObj.then(function (result) {
 	console.log(result);
 });
 
