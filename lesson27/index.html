@@ -10,5 +10,32 @@
 
 <script src="../jquery-1.7.1.js"></script>
 
+<script>
+
+/*
+	This routine below logs the value of myVar after two seconds as per the instruction
+	given to the setTimeout function.
+
+	The idea here is to proove that the value assigned in the setTimout only accesible after 
+	two seconds regarless where it is accessed, 
+	the value can only be accessed :
+	  1. Within the function where it will log after assgining the value after 2 seconds or 
+	  2. using a pubsub method where we learnt earlier in this tutorial.
+*/
+
+var myVar;
+setTimeout(function() {
+	myVar = 'my value in the setTimeout function';
+	console.log(myVar);
+}, 2000);
+console.log(myVar);
+
+
+
+
+
+
+</script>
+
 </body>
 </html>
