@@ -56,9 +56,39 @@ var myVar,
 ;
 
 
-setVal().done(function() {
+
+
+/*
+take note that this method below will only be triggered only when 
+the result is "resolved" this would mean calling done() will only execute if the deferred state 
+is .resolve();
+*/
+
+/*setVal().done(function() {
 	console.log('all done ' + myVar);
+});
+
+
+//the function below will execute when the deferred state is reject 
+setVal().fail(function() {
+	console.log('Failed ' + myVar);
+});
+
+//the function below ill execute regardless of the deferred state
+setVal().always(function() {
+	console.log('Failed ' + myVar);
+});
+*/
+
+//We can also chain methods above as below
+
+setVal().done(function() {
+	console.log('Done: ' + myVar);
+}).fail(function() {
+	console.log('Failed: ' + myVar);
 })
+
+
 
 
 
